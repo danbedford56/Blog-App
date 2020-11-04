@@ -20,3 +20,7 @@ body {
   margin-left: 45%;
   text-align: center;
 }
+
+.error_message {
+  color: red;
+}

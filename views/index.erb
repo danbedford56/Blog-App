@@ -1,9 +1,21 @@
+<link rel="stylesheet" type="text/css" href="/css/message_board.css">
 <head>
   <h1> Dan's Message Board </h1>
 </head>
 
 <body>
+  <h3> Log in: </h3>
+  <p class='error_message'><%= flash[:notice] %></p>
   <form action="/messages" method="post">
+    <label for="username">Enter your username here:</label>
+    <input type="text" name="username">
+    <label for="password">Enter your password here:</label>
+    <input type="password" name="password">
+    <input type="submit" value="Log in">
+  </form>
+  <br>
+  <h3> Create an account: </h3>
+  <form action="/messages/new_user" method="post">
     <label for="username">Enter your username here:</label>
     <input type="text" name="username">
     <label for="password">Enter your password here:</label>
