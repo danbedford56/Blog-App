@@ -1,0 +1,22 @@
+h1 {
+  
+  text-align: center;
+}
+
+.message {
+  border:5px solid rgb(41, 75, 38);
+  background-color: rgb(220, 238, 194);
+  padding:15px;
+  width: 400px;
+  text-align: center;
+  margin-left: 31%;
+}
+
+body {
+  background-color: rgb(86, 150, 115);
+}
+
+#new_message {
+  margin-left: 45%;
+  text-align: center;
+}

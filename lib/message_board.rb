@@ -17,9 +17,9 @@ class Message_Board
     true
   end
 
-  def self.delete(message)
+  def self.delete(id:)
     connection = self.connect
-    connection.exec("DELETE FROM messages WHERE message = '#{message}';")
+    connection.exec("DELETE FROM messages WHERE id = '#{id}';")
     true
   end
 

@@ -1,16 +1,23 @@
+<link rel="stylesheet" type="text/css" href="/css/message_board.css">
 <head>
   <h1> Welcome <%= @username %> </h1>
 </head>
 
 <body>
-  <a href='/add_message'>Add a new message</a>
+  <a id="new_message" href='/add_message'>Add a new message</a>
   <br>
-  <ul>
+  <ul style="list-style: none;">
     <% @messages.each do |message| %>
-      <li>
+      <li class='message'>
         <p>Message ID: <%= message.id %></p>
         <%= message.message%>
+        <br>
+        <form action="/messages/<%= message.id %>" method="post">
+          <input type='hidden' name='_method' value='DELETE'/>
+          <input type="submit" value="Delete" />
+        </form>
       </li>
+      <br>
     <% end %>
   </ul>
 </body>
