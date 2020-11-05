@@ -3,7 +3,7 @@ feature 'Adding a new peeps' do
     visit '/add_peep'
     fill_in('message', with: 'Test message')
     click_button 'Submit'
-
+    
     expect(current_path).to eq '/chitter_board'
     expect(page).to have_content 'Test message'
   end

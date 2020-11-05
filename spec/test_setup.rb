@@ -1,6 +1,6 @@
 require 'pg'
 
 def clear_test_db
-  connection = PG.connect(dbname: 'message_board_test')
-  connection.exec("TRUNCATE messages;")
+  connection = PG.connect(dbname: 'chitter_test')
+  connection.exec("TRUNCATE peeps;")
 end

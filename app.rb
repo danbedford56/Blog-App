@@ -15,42 +15,45 @@ class Chitter < Sinatra::Base
   # Post for logging into existing account
   post '/chitter' do
     if User.check_login(username: params[:username], password: params[:password])
-      session[:username] = params[:username]
+      #session[:user_id] = User.current_user
       redirect '/chitter_board'
     else
-      flash[:pword_notice] = 'Incorrect password!'
+      flash[:pword_notice] = 'Incorrect username or password!'
       redirect '/'
     end
   end
 
   # Post for creating new account
   post '/chitter/new_user' do
-    if User.check_username_taken(username: params[:username])
-      User.create_user(username: params[:username], password: params[:password])
-      session[:username] = params[:username]
-      redirect '/chitter_board'
-    else
-      flash[:user_notice] = 'This username is taken!'
+    if User.create_user(username: params[:username], password: params[:password]) == false
+      #session[:user_id] = User.current_user
+      flash[:username_notice] = 'This username is taken!'
       redirect '/'
+    else
+      redirect '/chitter_board'
     end
   end
 
+  # Get for main chitter view
   get '/chitter_board' do
-    @username = session[:username]
+    @user = User.find_user(id: User.current_user)
     @messages = ChitterBoard.all
     erb :chitter_board
   end
 
+  # Get for add peep view
   get '/add_peep' do
     erb :add_peep
   end
 
+  # Post for adding peep
   post '/add_peep' do
     peep = params[:message] + " -- #{session[:username]}"
-    ChitterBoard.add(peep)
+    ChitterBoard.add(message: peep, user_id: User.current_user)
     redirect '/chitter_board'
   end
 
+  # Delete method for deleting peeps
   delete '/chitter/:id' do
     ChitterBoard.delete(id: params[:id])
     redirect '/chitter_board'

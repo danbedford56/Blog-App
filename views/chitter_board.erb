@@ -12,10 +12,12 @@
         <p>Message ID: <%= message.id %></p>
         <%= message.message%>
         <br>
-        <form action="/chitter/<%= message.id %>" method="post">
-          <input type='hidden' name='_method' value='DELETE'/>
-          <input type="submit" value="Delete" />
-        </form>
+        <%if @user.id == message.user_id%>
+          <form action="/chitter/<%= message.id %>" method="post">
+            <input type='hidden' name='_method' value='DELETE'/>
+            <input type="submit" value="Delete" />
+          </form>
+        <% end %>
       </li>
       <br>
     <% end %>

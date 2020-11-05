@@ -5,19 +5,19 @@ require_relative 'database_connection'
 class ChitterBoard
 
   def self.all
-    result = DatabaseConnection.query("SELECT * FROM messages;")
-    result.map do |message|
-      Peep.new(message['id'], message['message'])
+    result = DatabaseConnection.query("SELECT * FROM peeps;")
+    result.map do |peep|
+      Peep.new(peep['id'], peep['message'], peep['user_id'])
     end
   end
 
-  def self.add(message)
-    DatabaseConnection.query("INSERT INTO messages (message) VALUES ('#{message}');")
+  def self.add(message:, user_id:)
+    DatabaseConnection.query("INSERT INTO peeps (message, user_id) VALUES ('#{message}', '#{user_id}');")
     true
   end
 
   def self.delete(id:)
-    DatabaseConnection.query("DELETE FROM messages WHERE id = '#{id}';")
+    DatabaseConnection.query("DELETE FROM peeps WHERE id = '#{id}';")
     true
   end
 
