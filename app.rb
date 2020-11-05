@@ -25,7 +25,7 @@ class Chitter < Sinatra::Base
 
   # Post for creating new account
   post '/chitter/new_user' do
-    if User.create_user(username: params[:username], password: params[:password]) == false
+    if User.create_user(username: params[:username_new], password: params[:password_new]) == false
       #session[:user_id] = User.current_user
       flash[:username_notice] = 'This username is taken!'
       redirect '/'
@@ -48,7 +48,8 @@ class Chitter < Sinatra::Base
 
   # Post for adding peep
   post '/add_peep' do
-    peep = params[:message] + " -- #{session[:username]}"
+    user = User.find_user(id: User.current_user)
+    peep = params[:message] + " -- #{user.username}"
     ChitterBoard.add(message: peep, user_id: User.current_user)
     redirect '/chitter_board'
   end

@@ -24,4 +24,5 @@ RSpec.describe ChitterBoard do
       expect(ChitterBoard.delete(id: '1')).to eq true
     end
   end
+  
 end
