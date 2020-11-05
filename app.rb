@@ -37,7 +37,7 @@ class Chitter < Sinatra::Base
   # Get for main chitter view
   get '/chitter_board' do
     @user = User.find_user(id: User.current_user)
-    @messages = ChitterBoard.all
+    @peeps = ChitterBoard.all
     erb :chitter_board
   end
 
@@ -52,6 +52,15 @@ class Chitter < Sinatra::Base
     peep = params[:message] + " -- #{user.username}"
     ChitterBoard.add(message: peep, user_id: User.current_user)
     redirect '/chitter_board'
+  end
+
+  # Get for search page
+  get '/peep_search' do
+    erb :search
+  end
+
+  post '/peep_search' do
+    ### DO SOME SHIT
   end
 
   # Delete method for deleting peeps

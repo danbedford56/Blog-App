@@ -1,25 +1,29 @@
 <link rel="stylesheet" type="text/css" href="/css/chitter_board.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <head>
   <h1> Welcome <%= @user.username %> </h1>
 </head>
 
 <body>
-  <a id="new_peep" href='/add_peep'>Post a new peep</a>
+  <a class="link" href='/add_peep'>Post a new peep</a>
+  <a class="link" href='/peep_search'>Search for peeps</a>
   <br>
   <ul style="list-style: none;">
-    <% @messages.each do |message| %>
+    <% @peeps.reverse.each do |peep| %>
       <li class='peep'>
-        <p>Message ID: <%= message.id %></p>
-        <%= message.message%>
+        <%= peep.message%>
         <br>
-        <%if @user.id == message.user_id%>
-          <form action="/chitter/<%= message.id %>" method="post">
+        <% if @user.id == peep.user_id %>
+          <form action="/chitter/<%= peep.id %>" method="post">
             <input type='hidden' name='_method' value='DELETE'/>
-            <input type="submit" value="Delete" />
+            <button type="submit" name="Delete" class="btn"><i class="fa fa-trash"></i></button>
           </form>
         <% end %>
+        <p id='date'> <%= peep.date %> </p>
       </li>
       <br>
     <% end %>
   </ul>
 </body>
+

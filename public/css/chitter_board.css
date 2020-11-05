@@ -15,11 +15,25 @@ body {
   background-color: rgb(86, 150, 115);
 }
 
-#new_peep {
+.link {
   margin-left: 45%;
   text-align: center;
 }
 
 .error_message {
   color: red;
+}
+
+.btn {
+  position: relative;
+  left: 195px;
+  top: -27px;
+}
+
+#date {
+  color: grey;
+  position: relative;
+  left: 5px;
+  top: 30px;
+  text-align: right;
 }
