@@ -1,12 +1,12 @@
-<link rel="stylesheet" type="text/css" href="/css/message_board.css">
+<link rel="stylesheet" type="text/css" href="/css/chitter_board.css">
 <head>
-  <h1> Dan's Message Board </h1>
+  <h1> Chitter </h1>
 </head>
 
 <body>
   <h3> Log in: </h3>
-  <p class='error_message'><%= flash[:notice] %></p>
-  <form action="/messages" method="post">
+  <p class='error_message'><%= flash[:pword_notice] %></p>
+  <form action="/chitter" method="post">
     <label for="username">Enter your username here:</label>
     <input type="text" name="username">
     <label for="password">Enter your password here:</label>
@@ -15,7 +15,8 @@
   </form>
   <br>
   <h3> Create an account: </h3>
-  <form action="/messages/new_user" method="post">
+  <p class='error_message'><%= flash[:user_notice] %></p>
+  <form action="/chitter/new_user" method="post">
     <label for="username">Enter your username here:</label>
     <input type="text" name="username">
     <label for="password">Enter your password here:</label>

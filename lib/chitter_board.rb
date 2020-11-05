@@ -1,13 +1,13 @@
 require 'pg'
-require_relative 'message'
+require_relative 'peep'
 require_relative 'database_connection'
 
-class Message_Board
+class ChitterBoard
 
   def self.all
     result = DatabaseConnection.query("SELECT * FROM messages;")
     result.map do |message|
-      Message.new(message['id'], message['message'])
+      Peep.new(message['id'], message['message'])
     end
   end
 

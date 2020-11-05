@@ -8,6 +8,21 @@ class User
     @username = username
   end
 
+  def self.all
+    result = DatabaseConnection.query("SELECT * FROM users;")
+    result.map do |user|
+      User.new(user['id'], user['username'])
+    end
+  end
+
+  def self.check_username_taken(username:)
+    result = self.all
+    result.each do |user|
+      return false if user.username == username
+    end
+    true
+  end
+
   def self.create_user(username:, password:)
     DatabaseConnection.query("INSERT INTO users (username, password) VALUES ('#{username}', '#{password}');")
   end

@@ -119,6 +119,6 @@ RSpec.configure do |config|
   end
 
   require File.join(File.dirname(__FILE__), '..', 'app.rb')
-  Capybara.app = Blog_App
+  Capybara.app = Chitter
   require 'features/web_helpers.rb'
 end

@@ -6,7 +6,10 @@
           1,
           1,
           1,
+          1,
+          1,
           null,
+          1,
           1,
           1,
           null,
@@ -14,7 +17,20 @@
           0,
           null,
           null,
+          null,
           1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
           0,
           0,
           null,
@@ -42,7 +58,7 @@
           null
         ]
       },
-      "/Users/dan/Projects/blog/lib/message_board.rb": {
+      "/Users/dan/Projects/blog/lib/chitter_board.rb": {
         "lines": [
           1,
           1,
@@ -70,7 +86,7 @@
           null
         ]
       },
-      "/Users/dan/Projects/blog/lib/message.rb": {
+      "/Users/dan/Projects/blog/lib/peep.rb": {
         "lines": [
           1,
           1,
@@ -100,6 +116,34 @@
           null,
           1,
           0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/dan/Projects/blog/lib/user.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
           null,
           null,
           null
@@ -183,6 +227,6 @@
         ]
       }
     },
-    "timestamp": 1604506579
+    "timestamp": 1604524760
   }
 }

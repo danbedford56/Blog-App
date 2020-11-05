@@ -1,18 +1,18 @@
-<link rel="stylesheet" type="text/css" href="/css/message_board.css">
+<link rel="stylesheet" type="text/css" href="/css/chitter_board.css">
 <head>
   <h1> Welcome <%= @username %> </h1>
 </head>
 
 <body>
-  <a id="new_message" href='/add_message'>Add a new message</a>
+  <a id="new_peep" href='/add_peep'>Post a new peep</a>
   <br>
   <ul style="list-style: none;">
     <% @messages.each do |message| %>
-      <li class='message'>
+      <li class='peep'>
         <p>Message ID: <%= message.id %></p>
         <%= message.message%>
         <br>
-        <form action="/messages/<%= message.id %>" method="post">
+        <form action="/chitter/<%= message.id %>" method="post">
           <input type='hidden' name='_method' value='DELETE'/>
           <input type="submit" value="Delete" />
         </form>
