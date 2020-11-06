@@ -54,18 +54,27 @@ class Chitter < Sinatra::Base
     redirect '/chitter_board'
   end
 
-  # Get for search page
-  get '/peep_search' do
-    erb :search
+  # Post method for search input
+  post '/peep_search' do
+    session[:results] = ChitterBoard.search(keyword: params[:keyword])
+    redirect '/peep_search'
   end
 
-  post '/peep_search' do
-    ### DO SOME SHIT
+  # Get method for showing search results view
+  get '/peep_search' do
+    @user = User.find_user(id: User.current_user)
+    @results = session[:results]
+    erb :search
   end
 
   # Delete method for deleting peeps
   delete '/chitter/:id' do
     ChitterBoard.delete(id: params[:id])
+    redirect '/chitter_board'
+  end
+
+  patch '/chitter/:id' do
+    ChitterBoard.like_peep(id: params[:id])
     redirect '/chitter_board'
   end
 end

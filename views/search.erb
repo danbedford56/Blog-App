@@ -1,10 +1,27 @@
+<link rel="stylesheet" type="text/css" href="/css/chitter_board.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <head>
   <h1>Search for peeps:</h1>
 </head>
 
 <body>
-  <form action='/peep_search' method='post'>
-    <input type='text' name='search_value'>
-    <input type='submit' value='Search'>
-  </form>
+  <a class="link" href='/chitter_board'>Back to timeline</a>
+  <br>
+  <ul style="list-style: none;">
+    <% @results.reverse.each do |peep| %>
+      <li class='peep'>
+        <%= peep.message%>
+        <br>
+        <% if @user.id == peep.user_id %>
+          <form action="/chitter/<%= peep.id %>" method="post">
+            <input type='hidden' name='_method' value='DELETE'/>
+            <button type="submit" name="Delete" class="btn"><i class="fa fa-trash"></i></button>
+          </form>
+        <% end %>
+        <p id='date'> <%= peep.date %> </p>
+      </li>
+      <br>
+    <% end %>
+  </ul>
 </body>

@@ -7,7 +7,11 @@
 
 <body>
   <a class="link" href='/add_peep'>Post a new peep</a>
-  <a class="link" href='/peep_search'>Search for peeps</a>
+  <p class="search">Search for peeps:</a>
+  <form class="search" action='/peep_search' method='post'>
+    <input type='text' name='keyword'>
+    <input type='submit' value='Search'>
+  </form>
   <br>
   <ul style="list-style: none;">
     <% @peeps.reverse.each do |peep| %>
@@ -20,6 +24,10 @@
             <button type="submit" name="Delete" class="btn"><i class="fa fa-trash"></i></button>
           </form>
         <% end %>
+        <form action="/chitter/<%= peep.id %>" method="post">
+          <input type='hidden' name='_method' value='PATCH'/>
+          <button type="submit" name="like" class="btn" id="like_btn"><i class="fa fa-heart"></i><%= peep.likes %></button>
+        </form>
         <p id='date'> <%= peep.date %> </p>
       </li>
       <br>

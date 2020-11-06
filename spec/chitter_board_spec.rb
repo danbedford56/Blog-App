@@ -24,5 +24,13 @@ RSpec.describe ChitterBoard do
       expect(ChitterBoard.delete(id: '1')).to eq true
     end
   end
-  
+
+  describe '.like_peep' do
+    it 'Likes a peep with given id' do
+      ChitterBoard.add(message: "Hello", user_id: '1')
+      expect(DatabaseConnection).to receive(:query).with "UPDATE peeps SET likes = likes + 1 WHERE id = '#{1}';"
+      ChitterBoard.like_peep(id: 1)
+    end
+  end
+
 end

@@ -30,6 +30,12 @@ body {
   top: -27px;
 }
 
+#like_btn{
+  position: relative;
+  left: 190px;
+  top: -27px;
+}
+
 #date {
   color: grey;
   position: relative;
