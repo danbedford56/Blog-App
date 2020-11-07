@@ -1,4 +1,5 @@
 require_relative 'database_connection'
+require 'bcrypt'
 
 class User
   attr_reader :id, :username
@@ -18,7 +19,8 @@ class User
 
   def self.create_user(username:, password:)
     return false if !self.check_username_taken(username: username)
-    DatabaseConnection.query("INSERT INTO users (username, password) VALUES ('#{username}', '#{password}');")
+    encrypted_pword = BCrypt::Password.create(password)
+    DatabaseConnection.query("INSERT INTO users (username, password) VALUES ('#{username}', '#{encrypted_pword}');")
     result = DatabaseConnection.query("SELECT id FROM users WHERE username LIKE '#{username}';")
     @current_user = result[0]['id']
   end
@@ -33,7 +35,7 @@ class User
     ##
     return false if !exists
     result = DatabaseConnection.query("SELECT * FROM users WHERE username LIKE '#{username}';")
-    if result[0]['password'] == password
+    if BCrypt::Password.new(result[0]['password']) == password
       @current_user = result[0]['id']
       true
     else
