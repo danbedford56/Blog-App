@@ -112,8 +112,6 @@ RSpec.configure do |config|
 
   # For accurate test coverage measurements, require your code AFTER 'SimpleCov.start'
 
-  ENV['RACK_ENV'] = 'test'
-
   config.before(:each) do
     clear_test_db
   end
