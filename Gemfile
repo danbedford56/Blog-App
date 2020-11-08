@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'sinatra-flash'
+gem 'sinatra-contrib'
 gem 'pg'
 gem 'bcrypt'
 

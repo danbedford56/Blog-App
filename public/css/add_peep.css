@@ -1,3 +1,19 @@
 textarea {
   resize: none;
 }
+
+body {
+  background-color: rgb(86, 150, 115);
+}
+
+form {
+  position: relative;
+  top: 30%;
+  left: 35%;
+  border:5px solid rgb(41, 75, 38);
+  background-color: rgb(220, 238, 194);
+  border-style: double;
+  padding:15px;
+  width: 400px;
+  text-align: center;
+}

@@ -49,7 +49,7 @@ class Chitter < Sinatra::Base
   # Post for adding peep
   post '/add_peep' do
     user = User.find_user(id: User.current_user)
-    peep = params[:message] + " -- #{user.username}"
+    peep = params[:message]
     ChitterBoard.add(message: peep, user_id: User.current_user)
     redirect '/chitter_board'
   end

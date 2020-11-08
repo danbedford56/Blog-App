@@ -7,16 +7,19 @@
 
 <body>
   <a class="link" href='/add_peep'>Post a new peep</a>
-  <p class="search">Search for peeps:</a>
-  <form class="search" action='/peep_search' method='post'>
-    <input type='text' name='keyword'>
-    <input type='submit' value='Search'>
-  </form>
+  <div class="search">
+    <p>Search for peeps:</a>
+    <form action='/peep_search' method='post'>
+      <input type='text' name='keyword'>
+      <input type='submit' value='Search'>
+    </form>
+  </div>
   <br>
   <ul style="list-style: none;">
     <% @peeps.reverse.each do |peep| %>
       <li class='peep'>
         <%= peep.message%>
+        --<%= peep.username%>
         <br>
         <% if @user.id == peep.user_id %>
           <form action="/chitter/<%= peep.id %>" method="post">
