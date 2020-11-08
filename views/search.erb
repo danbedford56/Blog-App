@@ -12,6 +12,7 @@
     <% @results.reverse.each do |peep| %>
       <li class='peep'>
         <%= peep.message%>
+        --<%= peep.username%>
         <br>
         <% if @user.id == peep.user_id %>
           <form action="/chitter/<%= peep.id %>" method="post">
@@ -19,6 +20,10 @@
             <button type="submit" name="Delete" class="btn"><i class="fa fa-trash"></i></button>
           </form>
         <% end %>
+        <form action="/chitter/<%= peep.id %>" method="post">
+          <input type='hidden' name='_method' value='PATCH'/>
+          <button type="submit" name="like" class="btn" id="like_btn"><i class="fa fa-heart"></i><%= peep.likes %></button>
+        </form>
         <p id='date'> <%= peep.date %> </p>
       </li>
       <br>
