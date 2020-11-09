@@ -5,13 +5,11 @@ class DatabaseConnection
   @database
 
   def self.setup(dbname)
-    uri = URI.parse(ENV['DATABASE_URL'])
-    @database = PG.connect({
-      host: uri.host,
-      dbname: uri.path[1..-1],
-      user: uri.user,
-      password: uri.password
-    })
+    if ENV['ENVIRONMENT'] = 'test'
+      @database = PG.connect(dbname: 'chitter_test')
+    else
+      @database = PG.connect(dbname: 'chitter')
+    end
   end
 
   def self.query(query)
